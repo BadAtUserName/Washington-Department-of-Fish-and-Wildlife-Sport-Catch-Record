@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="'stylesheet" href="/css/style.css">
+    <link rel="catch-form" href="/html/catch-form.html">
+    <title>Washington Department of Fish & Wildlife Sport Catch Card</title>
+  </head>
+  <body>
+    <div class="new-User">
+      <form id="new-user-form">
+        <fieldset>
+          <legend>New User Add Your Info Here</legend>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
+         
+          <label for="email">Enter your email.com email:</label>
+          <input type="text" id="email" name="email" required>
+         
+            <label for="licenseNumber">Enter your license number/Wild Id (must be 11 numerals):</label>
+            <input type="number" id="licenseNumber" max="99999999999">
+
+            <button type="submit">New User Submit!</button>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="existing-User">
+      <form id="existing-user-form">
+        <fieldset>
+            <legend>Existing User please login here</legend>
+            
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+         
+            <label for="licenseNumber">Enter your license number/Wild Id (must be 11 numerals):</label>
+            <input type="number" id="licenseNumber" max="99999999999">
+
+            <button type="submit">Login</button>
+        </fieldset>
+      </form>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
