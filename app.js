@@ -4,6 +4,8 @@
 let userArray  = [];
 let newUser;
 
+
+
 // TODO New User
 function getUsers() {
   return userArray;
@@ -39,7 +41,7 @@ function handleSubmit(event) {
 
 
 
-//exisiting user login  ******* you need to call this function somewhere**************
+//exisiting user login
 function LogInUser(event) {
   // get the info from the login form
   event.preventDefault();
@@ -62,7 +64,7 @@ function doesUserExist (name, licenseNumber) {
   for (let i = 0; i < userArray.length; i++) { 
     if(userArray[i].name === name && userArray[i].licenseNumber === licenseNumber) { 
       return true;
-    } 
+    }
   }
 
   return false;
@@ -89,7 +91,7 @@ function MakeNewUser(name, email, licenseNumber) {
 
 
 
-//*** executable code
+//*** executable code for login
 
 let BobTest = new MakeNewUser('Bob', 'bobtest@bobtest.com', '11111111111');
 getUsers().push(BobTest); //need better name
@@ -98,6 +100,4 @@ console.log(userArray);
 NewUserForm.addEventListener('submit', handleSubmit);
 ExistingUserForm.addEventListener('submit',LogInUser);
 
-
-//***************LETS MAKE SOME FISH */
 

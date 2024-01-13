@@ -8,26 +8,27 @@
   <title>Working Title Catch Form</title>
 </head>
 <body>
-    <div class="new-fish">
+    <div id="new-fish">
       <form id="new-fish-form">
         <fieldset>
           <legend>Add Currently Caught Fish</legend>
           <label for="marineArea">Marine Area</label>
           <input type="text" id="marineArea" name="marineArea">
          
-          <label for="DayOfWeek">Day Of the Week</label>
+          <label for="DayOfWeek">Day Of the Week</label><!--Turn This into a drop down menu -->
           <input type="text" id="DayOfWeek" name="DayOfWeek">
           
-          <label for="Month">Current Month</label>
+          <label for="Month">Current Month</label><!--Turn This into a drop down menu -->
           <input type="text" id="Month" name="Month">
 
-          <label for="Creature">Type Of Creature</label> 
-          <input type="text" id="Month" name="Month">
-         
-            <label for="licenseNumber">Enter your license number/Wild Id (must be 11 numerals):</label>
-            <input type="number" id="licenseNumber" max="99999999999">
+          <label for="Creature">Type Of Creature</label> <!--Turn This into a drop down menu -->
+          <input type="text" id="Creature" name="Creature">
 
-            <button type="submit">New User Submit!</button>
+          <label for="ClipType">Clip Type Hatched or Wild</label> <!--Turn This into a drop down menu -->
+          <input type="text" id="ClipType" name="ClipType">
+
+            <button type="submit">Submit Form!</button>
         </fieldset>
+    <script src="/catchform.js"></script>
 </body>
 </html>
