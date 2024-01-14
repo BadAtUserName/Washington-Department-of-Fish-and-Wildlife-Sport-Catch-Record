@@ -1,14 +1,33 @@
 //Global variables
-
-let fishCaughtArray = [];
 let newfish = document.getElementById('new-fish');
 
-
-//Get fish
-function getFishCaught() {
-  return fishCaughtArray;
+function getSignedInUserLicenseNumber() {
+  return localStorage.getItem('signedInUser');
 }
 
+//Get fish 
+function getFishCaughtByLicenseNumber(licenseNumber) {
+  //retrives data stored in local storage
+
+
+  let storedFish = localStorage.getItem(`${licenseNumber}:caught-fish`);
+  //if it wasn't there set a default value
+  if (!storedFish) {
+    let defaultValue = [];
+    localStorage.setItem(`${licenseNumber}:caught-fish`, JSON.stringify(defaultValue));
+    //default value
+    return defaultValue;
+  }
+  return JSON.parse(storedFish);
+}
+
+function addFish(fish, licenseNumber) {
+  //adds fish to caught fish
+  let caughtFish = getFishCaughtByLicenseNumber(licenseNumber);
+  caughtFish.push(fish);
+  //saves fish to caught fish
+  localStorage.setItem(`${licenseNumber}:caught-fish`, JSON.stringify(caughtFish));
+}
 //***************LETS MAKE SOME FISH (catch form html page)*******************************************/
 
 //*******get form for event submission from html
@@ -16,9 +35,10 @@ let NewFishForm= document.getElementById('new-fish-form');
 let fishTable =document.createElement('table'); //same as hourlySalesTable
 
 //build a table based on the fish caught array? HELPER FUNCTION
-function renderFishrows(table) {
-  for (let i = 0; i < fishCaughtArray.length; i++) {
-    fishCaughtArray[i].render(table);
+function renderFishrows(table,  licenseNumber) {
+  let caughtFish = getFishCaughtByLicenseNumber(licenseNumber);
+  for (let i = 0; i < caughtFish.length; i++) {
+    renderFishRow(table, caughtFish[i]);
   }
 }
 
@@ -45,13 +65,16 @@ let rebuildFishCaughtTable = function() {
   fishTable.remove();
   //create new table
   fishTable = document.createElement('table');
-  renderFishTable(fishTable);
+  // get signed in users license number
+  // and pass to render fish table
+  let licenseNumber = getSignedInUserLicenseNumber();
+  renderFishTable(fishTable, licenseNumber);
   newfish.appendChild(fishTable);
 };
-let renderFishTable = function (table) {
-  headerFunction(table);
-  renderFishrows(table);
 
+let renderFishTable = function (table, licenseNumber) {
+  headerFunction(table);
+  renderFishrows(table, licenseNumber);
 };
 
 //form submission for new fish caught form submission and event handler
@@ -61,45 +84,54 @@ function handleNewFishSubmit(event) {
   let DayOfWeek = event.target.DayOfWeek.value;
   let Month = event.target.Month.value;
   let Creature = event.target.Creature.value;
-  let clipType = event.targe.ClipType;
+  let clipType = event.target.ClipType.value;
   let newCatchSession;
   //make some new  fish with the inputs
-  newCatchSession = new MakeNewFishCaught(marineArea, DayOfWeek, Month, Creature, clipType);
-  fishCaughtArray.push(newCatchSession);
+  newCatchSession =  makeNewFishCaught(marineArea, DayOfWeek, Month, Creature, clipType);
+  let licenseNumber = getSignedInUserLicenseNumber();
+  if (licenseNumber)
+  {
+    addFish(newCatchSession, licenseNumber);
   //NewFishForm.reset();
-  newCatchSession.render(fishTable);
-  rebuildFishCaughtTable();
+    rebuildFishCaughtTable();
+  }
   //************ CALLL YOUR TABLE REBUILD RIGHT HERE and get rid of the line above this*/
 }
 
 //Fish Constructor Function
-function MakeNewFishCaught(marineArea, DayOfWeek, Month, Creature, ClipType) {
-  this.marineArea = marineArea;
-  this.DayOfWeek = DayOfWeek;
-  this.Month = Month;
-  this.Creature = Creature;
-  this.ClipType = ClipType;
+function makeNewFishCaught(marineArea, DayOfWeek, Month, Creature, ClipType) {
+  return {
+    marineArea :marineArea,
+    DayOfWeek : DayOfWeek,
+    Month : Month,
+    Creature :Creature,
+    ClipType : ClipType
+  };
 }
 
 //Prototype function we use them when we want to make something a bunch of times and need a guide for the thing we are making
-MakeNewFishCaught.prototype.render = function (table) {
+function renderFishRow(table, fish) {
   //row for each catch session
   let catchRow = document.createElement('tr');
   let tableItemKeys = ['marineArea', 'DayOfWeek', 'Month', 'Creature', 'clipType'];
   //lets loop though FishCaught array to get each row of a catch
   for (let i =0; i < tableItemKeys.length; i++) {
     let tableItem = document.createElement('td');
-    let content = `${this[tableItemKeys[i]]}`;
+    let content = `${fish[tableItemKeys[i]]}`;
     tableItem.innerText = content;
     catchRow.appendChild(tableItem);
   }
   table.appendChild(catchRow);
-};
+}
 //YOU ARE HERE YOU NEED TO GET YOUR TABLE TO HOLD SOMETHING
 
+if (!getSignedInUserLicenseNumber()) {
+  // redirect to sign in
+}
+
 //executable code for fish
-let fishTest = new MakeNewFishCaught('seattle', 'tuesday', 'january', 'salmon', 'wild');
-getFishCaught() .push(fishTest);
-console.log(fishCaughtArray);
+let fishTest = makeNewFishCaught('seattle', 'tuesday', 'february', 'salmon', 'wild');
+addFish(fishTest);
+console.log((getFishCaughtByLicenseNumber(getSignedInUserLicenseNumber())));
 rebuildFishCaughtTable();
 NewFishForm.addEventListener('submit', handleNewFishSubmit);
