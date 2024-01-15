@@ -92,7 +92,7 @@ function handleNewFishSubmit(event) {
   if (licenseNumber)
   {
     addFish(newCatchSession, licenseNumber);
-  //NewFishForm.reset();
+    //NewFishForm.reset();
     rebuildFishCaughtTable();
   }
   //************ CALLL YOUR TABLE REBUILD RIGHT HERE and get rid of the line above this*/
