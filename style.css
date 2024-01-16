@@ -1,33 +1,101 @@
 body {
-  background-color:#ffbe98;
+  background:#cefaff;
+}
+header{
+  font-size: 45px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 
-nav ul{
-  /* display: flex; */
-  /* flex-direction:row; */
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  background-color: #98efff;
-  
-  
+.nav-bar {
+  background-color:#15535a;
+  color: #fff; 
+  padding: 5px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+
 }
-nav ul li {
-  display: inline-block; 
-  padding: 1em 0;
-  text-align: center;
-  width: 100px;
+.nav-bar a { /* nave items links*/
+  color:whitesmoke;
+  text-decoration: none;
+  margin:0 px;
+  font-size:20px;
 }
+.nav-bar ul {
+  list-style: none; 
+  padding: 10px; 
+  margin: 0; 
+  display: flex; 
+  justify-content: space-between; 
+}
+.nav-bar li {
+  margin: 0 10px;
+  color:#fff
+}
+
+
 .new-User{
   margin:20px;
   padding: 20px;
   font-size: 20px;
-  border:5px dotted #1e8193;
+  border:5px dotted #0f3a3f;
 }
 
 .existing-User {
   margin:20px;
   padding: 20px;
   font-size: 20px;
-  border:5px dotted #1e8193;
+  border:5px dotted #0f3a3f;
+}
+
+#new-fish {
+  display: flex;
+  justify-content: space-between; 
+  margin:20px;
+  padding: 20px;
+  font-size: 20px;
+
+
+}
+
+.form-containter {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  border:5px dotted #0f3a3f;
+
+}
+#catchFormSubmit {
+  padding-top: 15px;
+
+}
+button {
+  transition-duration: 2s;
+}
+button:hover {
+  background-color: #04AA6D; /* Green */
+  color: white;
+}
+
+#fish-container {
+  display: flex;
+  flex-direction: column;
+  margin-left:auto;
+}
+
+table,th, td {
+  background-color: #9df6ff;
+  padding: 5px;
+  border: 1px solid;
+  border-collapse: collapse ;
+  border-color: black;
+  margin-left: auto;
+  margin-right: auto;
+  
 }

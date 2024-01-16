@@ -70,3 +70,43 @@ function getFishCaughtByLicenseNumber(licenseNumber) {
 let creatureSum = sumOfCreaturesCaught();
 console.log(changeCreatureSumsForChart(creatureSum));
 changeCreatureSumsForChart(creatureSum);
+
+let ctx = document.getElementById('creatureChart');
+
+function renderCreaturesCaughtChart(){
+
+  let chartObj= {
+    type: 'bar',
+    data: {
+      labels: Object.keys(creatureSum),
+      datasets: [{
+        label: 'Creature Count',
+        data: Object.values(creatureSum),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.7)',
+          'rgba(54, 162, 235, 0.7)',
+          'rgba(75, 192, 192, 0.7)',
+          // Add more colors as needed
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(75, 192, 192, 1)',
+          // Add more colors as needed
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+
+  new Chart(ctx, chartObj);
+}
+
+renderCreaturesCaughtChart();

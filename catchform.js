@@ -1,5 +1,4 @@
 //Global variables
-let newfish = document.getElementById('new-fish');
 
 function getSignedInUserLicenseNumber() {
   return localStorage.getItem('signedInUser');
@@ -32,8 +31,6 @@ function addFish(fish, licenseNumber) {
 
 //*******get form for event submission from html
 let NewFishForm= document.getElementById('new-fish-form');
-let fishTable =document.createElement('table'); //same as hourlySalesTable
-
 //build a table based on the fish caught array? HELPER FUNCTION
 function renderFishrows(table,  licenseNumber) {
   let caughtFish = getFishCaughtByLicenseNumber(licenseNumber);
@@ -50,7 +47,7 @@ function headerFunction(table) {
 
   //let cell = document.createElement('th');
   //headerRow.appendChild(cell);
-  let headerLabelArray = ['marineArea', 'DayOfWeek', 'Month', 'Creature', 'clipType'];
+  let headerLabelArray = ['marine Area', 'Day Of Week', 'Month', 'Creature', 'clip Type'];
   for (let i = 0; i <headerLabelArray.length; i++) {
     let headerCell = document.createElement('th');
     headerCell.textContent = headerLabelArray[i];
@@ -61,15 +58,16 @@ function headerFunction(table) {
 
 //let fishCaughtSessionCell = document.createElement
 let rebuildFishCaughtTable = function() {
-//remove old table from dom
-  fishTable.remove();
+  let fishContainer = document.getElementById('fish-container');
+  //remove old table from dom
+  fishContainer.innerHTML = '';
   //create new table
-  fishTable = document.createElement('table');
+  let fishTable = document.createElement('table');
   // get signed in users license number
   // and pass to render fish table
   let licenseNumber = getSignedInUserLicenseNumber();
   renderFishTable(fishTable, licenseNumber);
-  newfish.appendChild(fishTable);
+  fishContainer.appendChild(fishTable);
 };
 
 let renderFishTable = function (table, licenseNumber) {
@@ -113,7 +111,7 @@ function makeNewFishCaught(marineArea, DayOfWeek, Month, Creature, ClipType) {
 function renderFishRow(table, fish) {
   //row for each catch session
   let catchRow = document.createElement('tr');
-  let tableItemKeys = ['marineArea', 'DayOfWeek', 'Month', 'Creature', 'clipType'];
+  let tableItemKeys = ['marineArea', 'DayOfWeek', 'Month', 'Creature', 'ClipType'];
   //lets loop though FishCaught array to get each row of a catch
   for (let i =0; i < tableItemKeys.length; i++) {
     let tableItem = document.createElement('td');
