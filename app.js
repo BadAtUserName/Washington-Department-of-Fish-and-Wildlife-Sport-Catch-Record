@@ -54,6 +54,7 @@ function createNewUser (name, email, licenseNumber) {
     addUserToList(newUser);
     NewUserForm.reset();
   }
+  handleExistingUserRedirect();
 }
 
 //exisiting user login

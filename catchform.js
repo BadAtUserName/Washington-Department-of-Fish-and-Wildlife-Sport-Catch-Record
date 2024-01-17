@@ -32,7 +32,7 @@ function addFish(fish, licenseNumber) {
 //*******get form for event submission from html
 let NewFishForm= document.getElementById('new-fish-form');
 //build a table based on the fish caught array? HELPER FUNCTION
-function renderFishrows(table,  licenseNumber) {
+function renderFishrows(table, licenseNumber) {
   let caughtFish = getFishCaughtByLicenseNumber(licenseNumber);
   for (let i = 0; i < caughtFish.length; i++) {
     renderFishRow(table, caughtFish[i]);
@@ -47,7 +47,7 @@ function headerFunction(table) {
 
   //let cell = document.createElement('th');
   //headerRow.appendChild(cell);
-  let headerLabelArray = ['marine Area', 'Day Of Week', 'Month', 'Creature', 'clip Type'];
+  let headerLabelArray = ['marine Area', 'Day Of Week', 'Month', 'Creature', 'Clip Type'];
   for (let i = 0; i <headerLabelArray.length; i++) {
     let headerCell = document.createElement('th');
     headerCell.textContent = headerLabelArray[i];
@@ -85,12 +85,12 @@ function handleNewFishSubmit(event) {
   let clipType = event.target.ClipType.value;
   let newCatchSession;
   //make some new  fish with the inputs
-  newCatchSession =  makeNewFishCaught(marineArea, DayOfWeek, Month, Creature, clipType);
+  newCatchSession = makeNewFishCaught(marineArea, DayOfWeek, Month, Creature, clipType);
   let licenseNumber = getSignedInUserLicenseNumber();
   if (licenseNumber)
   {
     addFish(newCatchSession, licenseNumber);
-    //NewFishForm.reset();
+    NewFishForm.reset();
     rebuildFishCaughtTable();
   }
   //************ CALLL YOUR TABLE REBUILD RIGHT HERE and get rid of the line above this*/
