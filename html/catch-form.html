@@ -4,30 +4,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="index" href="/html/index.html">
-  <link rel="'stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/reset.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="catch-form" href="html/catch-form.html">
+  <link rel="data" href="html/data.html">
+  <link rel="index" href="index.html">
   <title>Working Title Catch Form</title>
 </head>
+<header>
+  <h1>Welcome to The Washington Department of Fish & Wildlife's Sport Catch Card</h1>
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+     <!--<li><a href="catch-form.html">Catch Form</a>-->
+      <li><a href="data.html">Catch Report</a></li>
+      
+    </ul>
+  </nav>
+</header>
 <body>
-    <div class="new-fish">
-      <form id="new-fish-form">
-        <fieldset>
-          <legend>Add Currently Caught Fish</legend>
-          <label for="marineArea">Marine Area</label>
-          <input type="text" id="marineArea" name="marineArea">
-         
-          <label for="DayOfWeek">Day Of the Week</label>
-          <input type="text" id="DayOfWeek" name="DayOfWeek">
-          
-          <label for="Month">Current Month</label>
-          <input type="text" id="Month" name="Month">
+  <!--container holding data submission and table holds the container the section that holds all of it-->
+  <div id="container-holding-data-submission-and-table">
+  <div id="new-fish-data-submission-fields">
+    <form id="new-fish-form">
+      <fieldset class="form-containter">
+        <legend>Add Currently Caught Fish</legend>
+  
+        <label for="marineArea">Marine Area</label>
+        <input type="text" id="marineArea" name="marineArea">
+  
+        <label for="DayOfWeek">Day Of the Week</label>
+        <!--<input type="text" id="DayOfWeek" name="DayOfWeek"> -->
+        <select id="DayOfWeek" name="DayOfWeek">
+        <option></option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+        </select>
 
-          <label for="Creature">Type Of Creature</label> 
-          <input type="text" id="Month" name="Month">
-         
-            <label for="licenseNumber">Enter your license number/Wild Id (must be 11 numerals):</label>
-            <input type="number" id="licenseNumber" max="99999999999">
+        <label for="Month">Current Month</label>
+        <select id="Month" name="Month">
+          <option></option>
+          <option value="January">January</option>
+          <option value="Feburary">Feburary</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">Ocotober</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
 
-            <button type="submit">New User Submit!</button>
-        </fieldset>
-</body>
-</html>
+        <label for="Creature">Type Of Creature</label>
+        <select id="Creature" name="Creature">
+          <option></option>
+          <option value="Salmon Chinook">Salmon Chinook</option>
+          <option value="Salmon Coho">Salmon Coho</option>
+          <option value="Salmon Chum">Salmon Chum</option>
+          <option value="Salmon Pink">Salmon Pink</option>
+          <option value="Salmon Sockeye">Salmon Sockeye</option>
+          <option value="Steelhead">Steelhead</option>
+          <option value="Crab">Crab</option>
+        </select>
+
+        <p>Clip Type Hatched or Wild</p>
+        <label>
+          <div id="radio-button">
+          <input type="radio" name="ClipType" value="Wild">
+          Wild
+        </label>
+        <label>
+          <input type="radio" name="ClipType" value="Hatched">
+          Hatched
+        </div>
+        </label>
+        
+        
+  
+        <div id="catchFormSubmit"></div>
+        <button type="submit">Submit Form!</button>
+      </fieldset>
+    </form>
+  </div>
+  
+  <div class="holds-img-and-table">
+  <!-- Holds table content -->
+  <div id="fish-container"></div>
+  <img id="man-holding-salmon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Man_holding_a_steelhead_%28Oncorhynchus_mykiss%29_cropped.jpg/800px-Man_holding_a_steelhead_%28Oncorhynchus_mykiss%29_cropped.jpg" alt="man holding salmon">
+  </div>
+  </div>
+  </div>
+  
+  <script src="/catchform.js"></script>
+  <script src="/data.js"></script>
+  
+  </body>
+  </html>

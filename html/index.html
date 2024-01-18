@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="'stylesheet" href="/css/style.css">
-    <link rel="catch-form" href="/html/catch-form.html">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="catch-form" href="html/catch-form.html">
+    <link rel="data" href="html/data.html">
     <title>Washington Department of Fish & Wildlife Sport Catch Card</title>
   </head>
   <body>
+    <header>
+      <h1 id="welcome-header">Welcome to The Washington Department of Fish & Wildlife's Sport Catch Card</h1>
+      <nav class="nav-bar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <!--<li><a href="catch-form.html">Catch Form</a>-->
+          <li><a href="data.html">Catch Report</a></li>
+          <!--<li><a href="data.html">About Us</a></li>-->
+          
+        </ul>
+      </nav>
+    </header>
     <div class="new-User">
       <form id="new-user-form">
         <fieldset>
@@ -26,7 +40,7 @@
         </fieldset>
       </form>
     </div>
-
+    <div class="contains-form-and-text">
     <div class="existing-User">
       <form id="existing-user-form">
         <fieldset>
@@ -42,6 +56,14 @@
         </fieldset>
       </form>
     </div>
+    <div id="info-about-form">
+    <p>
+      Welcome to the Washington Department of Fish and Wildlife Sport Catch report page. After logging in you will be able to enter your sport catch using a form. These are all updated and added to the catch report. If you would just like to view the catch report please select it from the nav bar.
+    </p>
+  </div>
+</div>
     <script src="/app.js"></script>
+    <script src="/catchform.js"></script>
+  
   </body>
 </html>

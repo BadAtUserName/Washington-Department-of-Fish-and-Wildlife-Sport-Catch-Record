@@ -1,12 +1,24 @@
 'use strict';
 
 // Global variables
-let userArray  = [];
-let newUser;
+//let newUser;
 
-// TODO New User
-function getUsers() {
-  return userArray;
+// TODO New User stores them in something like userArray
+function getUserList() {
+  let storedUser = localStorage.getItem('get-user');
+  if(!storedUser) {
+    localStorage.setItem('get-user', JSON.stringify([]));
+    return [];
+  }
+  return JSON.parse(storedUser);
+}
+
+function addUserToList(user) {
+  let users = getUserList();
+  users.push(user);
+  localStorage.setItem('get-user', JSON.stringify(users));
+
+  //return userArray;
 }
 
 //*******get form for event submission from html
@@ -17,11 +29,17 @@ let ExistingUserForm = document.getElementById( 'existing-user-form');
 //***** New User Form Submission and Even handler
 //1.New user needs name, email, license number
 function handleSubmit(event) {
+
   event.preventDefault();
   //values from form
   let name = event.target.name.value;
   let email = event.target.email.value;
   let licenseNumber = event.target.licenseNumber.value;
+  createNewUser(name, email, licenseNumber);
+}
+
+function createNewUser (name, email, licenseNumber) {
+
   // let userExists = doesUserExist(name, licenseNumber)
   let userExists = doesUserExist(name, licenseNumber);
   // Check if (userExists)
@@ -31,15 +49,15 @@ function handleSubmit(event) {
     return ('get your error message from your html');
   } else {
   // create new user with form input values
-    newUser = new MakeNewUser(name, email, licenseNumber);
-    getUsers().push(newUser);
+
+    let newUser = MakeNewUser(name, email, licenseNumber);
+    addUserToList(newUser);
     NewUserForm.reset();
   }
+  handleExistingUserRedirect();
 }
 
-
-
-//exisiting user login  ******* you need to call this function somewhere**************
+//exisiting user login
 function LogInUser(event) {
   // get the info from the login form
   event.preventDefault();
@@ -49,6 +67,7 @@ function LogInUser(event) {
   // if doesUSerExist
   if (doesUserExist(name, licenseNumber)) {
     // handleExistingUserRedirect
+    localStorage.setItem('signedInUser', licenseNumber);
     return handleExistingUserRedirect();
   } else {
     return('get your error message out of html');
@@ -59,10 +78,11 @@ function LogInUser(event) {
 //TODO check if user exists
 function doesUserExist (name, licenseNumber) {
   // return true or false
-  for (let i = 0; i < userArray.length; i++) { 
-    if(userArray[i].name === name && userArray[i].licenseNumber === licenseNumber) { 
+  let userList = getUserList();
+  for (let i = 0; i < userList.length; i++) {
+    if(userList[i].name === name && userList[i].licenseNumber === licenseNumber) {
       return true;
-    } 
+    }
   }
 
   return false;
@@ -80,24 +100,21 @@ function handleExistingUserRedirect() {
 // *****Constructor functions ***
 //1.New user needs name, email, license number
 function MakeNewUser(name, email, licenseNumber) {
-  this.name = name;
-  this.email = email;
-  this.licenseNumber = licenseNumber;
+  return {
+    name: name,
+    email: email,
+    licenseNumber: licenseNumber
+  };
 }
-
 //TODO store them somewhere not in an array
 
 
 
-//*** executable code
-
-let BobTest = new MakeNewUser('Bob', 'bobtest@bobtest.com', '11111111111');
-getUsers().push(BobTest); //need better name
-console.log(userArray);
+//*** executable code for login
+createNewUser('Bob', 'bobtest@bobtest.com', '11111111111');
+console.log(getUserList());
 
 NewUserForm.addEventListener('submit', handleSubmit);
 ExistingUserForm.addEventListener('submit',LogInUser);
 
-
-//***************LETS MAKE SOME FISH */
 

@@ -1,0 +1,191 @@
+body {
+  background:#cefaff;
+}
+header{
+  font-size: 45px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+ #welcome-header{
+  padding-bottom: 40px;
+
+ }
+.nav-bar {
+  background-color:#15535a;
+  color: #fff;
+  margin: 10px; 
+  padding: 5px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+
+}
+.nav-bar a { /* nave items links*/
+  display: flex;
+  justify-content: space-between;
+  color:whitesmoke;
+  text-decoration: none;
+  margin:0 px;
+  font-size:20px;
+}
+.nav-bar a:hover {
+  text-decoration: underline;
+}
+.nav-bar ul {
+  list-style: none; 
+  padding: 10px; 
+  margin: 0; 
+  display: flex; 
+  justify-content: space-between; 
+}
+.nav-bar li {
+  margin: 0 10px;
+  color:#fff
+}
+
+
+.new-User{
+  margin:20px;
+  padding: 20px;
+  font-size: 20px;
+  border:5px dotted #0f3a3f;
+}
+
+.existing-User {
+  margin:20px;
+  padding: 20px;
+  font-size: 20px;
+  border:5px dotted #0f3a3f;
+}
+.contains-form-and-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#info-about-form{
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+}
+/*FISH SUBMISSION PAGE STYLES*/
+
+#container-holding-data-submission-and-table {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  padding:20px;
+}
+
+/*hold the border and things inside*/
+.form-containter {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  border:5px dotted #0f3a3f;
+
+}
+
+ #new-fish-data-submission-fields{
+  display: flex;
+  justify-content: space-between; 
+
+  font-size: 20px;
+}
+/*holds the area tha holds the table*/
+#fish-container{
+  text-align: left;
+  margin:25px;
+  width: auto;
+}
+
+#fish-container th {
+  font-weight: bolder;
+  border: 1px solid;
+}
+#fish-container table {
+  width: 800px;
+}
+
+th, td {
+  background-color: #9df6ff;
+  padding: 5px;
+  border: 1px solid;
+  border-collapse: collapse ;
+  border-color: black;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#new-fish-form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+#catchFormSubmit {
+  padding-top: 15px;
+
+}
+
+.holds-img-and-table {
+  display: flex;
+  flex-direction: column;
+}
+
+#man-holding-salmon {
+  padding-left: 25px;
+  width:800px
+}
+#radio-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+button {
+  transition-duration: 2s;
+}
+button:hover {
+  background-color: #04AA6D; /* Green */
+  color: white;
+}
+
+/*DATA AND ABOUT US PAGE STYLES*/
+#chart {
+  padding: 15px;
+  width: 100%;
+}
+
+.about-us-img-contact-container{
+  display: flex;
+
+}
+
+#lake-washington{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  max-height: 330px;
+  
+}
+#scroll-container{
+  overflow: auto;
+  max-width: 860px;
+  max-height: 330px;
+}
+.about-us{
+  display: flex;
+  flex-direction: column;
+  margin:5px;
+  padding: 15px;
+}
+
+h2 {
+  font-size: 20px;
+}
