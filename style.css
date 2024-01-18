@@ -30,6 +30,9 @@ header{
   margin:0 px;
   font-size:20px;
 }
+.nav-bar a:hover {
+  text-decoration: underline;
+}
 .nav-bar ul {
   list-style: none; 
   padding: 10px; 
