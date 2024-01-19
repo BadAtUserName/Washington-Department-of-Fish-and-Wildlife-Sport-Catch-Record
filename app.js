@@ -90,7 +90,7 @@ function doesUserExist (name, licenseNumber) {
 
 //user redirect function
 function handleExistingUserRedirect() {
-  let redirectCatchFormPage = '/html/catch-form.html';
+  let redirectCatchFormPage = 'catch-form.html';
 
   window.location.href = redirectCatchFormPage;
 
