@@ -26,3 +26,10 @@ Images from Wikipedia Creative Commons<br>
 https://en.wikipedia.org/wiki/File:Lake_Washington_-_SE_View.jpg<br>
 
 https://en.wikipedia.org/wiki/File:Man_holding_a_steelhead_(Oncorhynchus_mykiss)_cropped.jpg
+
+color refrence
+
+https://colors.muz.li/palette/15535a/0f3a3f/cefaff/9df6ff/9df6ff
+
+chart
+https://www.chartjs.org/docs/latest/charts/bar.html
